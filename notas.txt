@@ -1,0 +1,26 @@
+db.nombreColeccion.find()
+
+db.nombreColeccion.find({ nombre: "Juan" })
+
+db.nombreColeccion.find({ edad: { $gt: 18 } })
+
+db.nombreColeccion.find({ nombre: "Juan", edad: { $gt: 18 } })
+
+db.nombreColeccion.find({ $or: [{ nombre: "Juan" }, { edad: { $lt: 20 } }] })
+
+db.nombreColeccion.find({ nombre: "Juan" }, { nombre: 1, _id: 0 }) //solo los campos que quermos
+
+db.nombreColeccion.find({ nombre: /^J/ })   // el pattern
+
+db.nombreColeccion.find({ etiquetas: "importante" }) // valor específico del array
+
+db.nombreColeccion.find({ edad: { $in: [20, 25, 30] } })   // en una lista de valore
+
+db.nombreColeccion.find().limit(5)
+
+db.nombreColeccion.find().sort({ edad: -1 })  //descendente
+
+db.nombreColeccion.find(
+    { $or: [{ nombre: "Ana" }, { nombre: "Pedro" }] },
+    { nombre: 1, edad: 1, _id: 0 }
+).sort({ edad: -1 }).limit(5)
